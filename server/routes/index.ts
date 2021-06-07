@@ -9,7 +9,7 @@ export default function routes(router: Router): Router {
   get('/', (req, res) => {
     const roles = extractRoles(res)
     res.render('pages/index', {
-      registers: [
+      audit: [
         {
           id: 'Audit',
           heading: 'Audit',
@@ -19,8 +19,7 @@ export default function routes(router: Router): Router {
           enabled: true,
         },
       ].filter(
-        register =>
-          Boolean(register.roles === null || register.roles.find(role => roles.includes(role))) && register.enabled
+        audit => Boolean(audit.roles === null || audit.roles.find(role => roles.includes(role))) && audit.enabled
       ),
     })
   })
